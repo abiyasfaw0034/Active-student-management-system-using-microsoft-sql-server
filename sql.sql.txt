@@ -1,0 +1,63 @@
+create database yanetcollage;
+use database yanetcollage;
+
+create table student(     --------student
+  studentid varchar(50) primary key,
+  studentFname varchar(50),
+  studentLname varchar(50),
+  email varchar(50),
+  gender varchar(5),
+  DOB date,
+  admissiondate date
+)
+create table faculty(            ------faculty
+  facultyid varchar(50) primary key,
+  facultyFname varchar(50),
+  facultyLname varchar(50),
+  email varchar(50),
+  coursesassigned varchar(50)
+)
+create table department(         ------department
+  departmentid varchar(50) primary key,
+  departmentname varchar(50),
+  department_head varchar(50),
+  foreign key(department_head) references faculty(facultyid)
+)
+create table course(             ------course
+  courseid varchar(50) primary key,
+  coursename varchar(50),
+  coursecode varchar(50)
+  description varchar(50),
+  duration varchar(50),
+  department varchar(50),
+  foreign key(department) references department(departmentid)
+)
+Create table class (
+faculty_id varchar(50)  , 
+course_id varchar(50)   , 
+student_id varchar(50) ,
+ Enrollementdate date  , 
+Grade  varchar(5), 
+Semester int, 
+Academicyear   date
+
+Primary key( course_id, student_id),
+
+Foreign key( faculty_id references Faculty(faculty_id)),
+Foreign key(course_id references Course(course_id)),
+Foreign key(student_id references Student(student_id))
+
+)
+
+Create table address(
+Addressid varchar(50) primary key,
+Street varchar(50),
+City varchar(50),
+Country varchar(50),
+Postalcode int)
+
+Create table tellNo(
+Tellno_id varchar(50) primary key,
+Phone_number int,
+Notes varchar (50)
+Country_code int)
